@@ -45,7 +45,7 @@ catkin_package(
 ###########
 ## Build ##
 ###########
-SET(EIGEN3_INCLUDE_DIRS "../../rsl_dynamic_mapping/thirdparty/eigen") # Adapt if necessary
+SET(EIGEN3_INCLUDE_DIRS "thirdparty/eigen") # Adapt if necessary
 
 include_directories(
   include

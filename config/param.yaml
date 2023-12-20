@@ -2,16 +2,10 @@ pcl_labeling:
   topics:
     subscribers:
       rgb_img_topic: /camUSBRightView/image_preprocessed
-      panoptic_segmentation_mask_topic: /src/mask
-      # lidar_pcl_topic: /os_cloud_node/points
       lidar_pcl_topic: /livox/lidar
     publishers:
-      labeled_pcl_topic: /labeled_points
       rgb_pcl_topic: /rgb_points
-      end_effector_pcl_topic: /end_effector_points
-      self_filtered_pcl_topic: /self_filtered_points
   frames:
-    # lidar_frame: "os_sensor"
     lidar_frame: "livox_frame"
     camera_frame: "camUSBRightView"
   camera_calibration:
@@ -20,9 +14,6 @@ pcl_labeling:
       fy: 1.023248205237604225e+03
       cx: 1.082437464955866744e+03
       cy: 7.514671274447292717e+02
-  # labels: 
-    # end_effector_labels: [33, 34]  #  27 self arm, 33 is bucket, 34 gripper
-    # self_labels: [27, 33, 34]
   tf_lidar_camera:
     translation:
       x: 0.00489238830250402
