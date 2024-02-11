@@ -2,9 +2,9 @@
 
 <package format="2">
 
-  <name>pcl_labeling_minimal</name>
+  <name>pcl_labeling</name>
   <version>0.5.0</version>
-  <description>Pointcloud Labeling Minimal Example</description>
+  <description>Pointcloud Labeling</description>
 
   <license>BSD</license>
 

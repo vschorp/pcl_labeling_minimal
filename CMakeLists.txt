@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.1)
-project(pcl_labeling_minimal)
+project(pcl_labeling)
 
 set(CMAKE_CXX_STANDARD 14)
 add_compile_options(-Wall -Wextra -Wpedantic)
@@ -20,7 +20,6 @@ set(SRC_FILES
   src/PointLabeler.cpp
   src/PointLabelerRos.cpp
   src/LidarCameraProjector.cpp
-  src/helpers.cpp
 )
 
 find_package(catkin REQUIRED
@@ -45,7 +44,7 @@ catkin_package(
 ###########
 ## Build ##
 ###########
-SET(EIGEN3_INCLUDE_DIRS "thirdparty/eigen") # Adapt if necessary
+SET(EIGEN3_INCLUDE_DIRS "../eigen") # Adapt if necessary
 
 include_directories(
   include

@@ -1,7 +1,9 @@
 #include "pcl_labeling/PointLabeler.hpp"
 
-void PointLabeler::processPointCloud(const Eigen::Matrix3Xd& pts, const cv::Mat& segMask, const Eigen::Isometry3d& lidarToCamera) {
-  // Here segMask stands for image as this class was initially written for using 2D segmentation masks instead of rgb images.
+void PointLabeler::processPointCloud(const Eigen::Matrix3Xd& pts, const cv::Mat& segMask,
+                                     const Eigen::Isometry3d& lidarToCamera) {
+  // Here segMask stands for image as this class was initially written for using 2D segmentation masks instead of rgb
+  // images.
   std::vector<int> indices;
   Eigen::MatrixXd coloredStaticCloud = labelPoints(pts, segMask, lidarToCamera, indices);
   rgbPointCloud_.conservativeResize(6, pts.cols());
@@ -19,7 +21,8 @@ void PointLabeler::processPointCloud(const Eigen::Matrix3Xd& pts, const cv::Mat&
   }
 }
 
-Eigen::MatrixXd PointLabeler::labelPoints(const Eigen::Matrix3Xd& pts, const cv::Mat& segMask, const Eigen::Isometry3d& lidarToCamera, std::vector<int>& labelPtsIdx) {
+Eigen::MatrixXd PointLabeler::labelPoints(const Eigen::Matrix3Xd& pts, const cv::Mat& segMask,
+                                          const Eigen::Isometry3d& lidarToCamera, std::vector<int>& labelPtsIdx) {
   projector_.projectPtsToCameraFrame(pts, lidarToCamera);
   labelPtsIdx = projector_.filterVisiblePoints(pts, segMask.size());
   Eigen::Matrix3Xi pixelPts = projector_.getPixelPoints().cast<int>();

@@ -12,7 +12,9 @@ class LidarCameraProjector {
   Eigen::Matrix3Xd getProjectedPoints() { return projectedPoints_; }
   Eigen::Matrix3Xd getPixelPoints() { return pixelPoints_; }
   Eigen::Matrix3Xd getVisiblePoints() { return visiblePoints_; }
-  void setCameraProjectionMatrix(const Eigen::Matrix<double, 3, 4>& cameraProjection) { cameraProjection_ = cameraProjection; }
+  void setCameraProjectionMatrix(const Eigen::Matrix<double, 3, 4>& cameraProjection) {
+    cameraProjection_ = cameraProjection;
+  }
 
  private:
   Eigen::Matrix<double, 3, 4> cameraProjection_;
