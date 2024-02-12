@@ -10,12 +10,14 @@ void PointLabelerRos::initialize() {
   nh_.getParam("/end_effector_type", end_effector_type_);
 
   // Get camera projection matrix
-  double fx, fy, cx, cy;
+  double fx, fy, cx, cy, resize_factor;
   nh_.getParam("/intrinsic_camera_calibration/" + sensor_setup_ + "/camera_matrix/fx", fx);
   nh_.getParam("/intrinsic_camera_calibration/" + sensor_setup_ + "/camera_matrix/fy", fy);
   nh_.getParam("/intrinsic_camera_calibration/" + sensor_setup_ + "/camera_matrix/cx", cx);
   nh_.getParam("/intrinsic_camera_calibration/" + sensor_setup_ + "/camera_matrix/cy", cy);
-  cameraProjection_ << fx, 0.0, cx, 0.0, 0.0, fy, cy, 0.0, 0.0, 0.0, 1.0, 0.0;
+  nh_.getParam("/intrinsic_camera_calibration/" + sensor_setup_ + "/image_resize_factor", resize_factor);
+  cameraProjection_ << fx * resize_factor, 0.0, cx * resize_factor, 0.0, 0.0, fy * resize_factor, cy * resize_factor,
+      0.0, 0.0, 0.0, 1.0, 0.0;
   projector_.setCameraProjectionMatrix(cameraProjection_);
 
   nh_.getParam("/frames/lidar_frame", lidarFrame_);
